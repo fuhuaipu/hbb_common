@@ -100,8 +100,8 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["rs-ny.rustdesk.com"];
-pub const RS_PUB_KEY: &str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
+pub const RENDEZVOUS_SERVERS: &[&str] = &["oa.vsungtech.com"];
+pub const RS_PUB_KEY: &str = "tcO6w6fEVGV7J72Y8Nioy5g7UK72lrAwgOc+56NeFtg=";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
@@ -952,7 +952,9 @@ impl Config {
     }
 
     pub fn no_register_device() -> bool {
-        BUILTIN_SETTINGS.read().unwrap()
+        BUILTIN_SETTINGS
+            .read()
+            .unwrap()
             .get(keys::OPTION_REGISTER_DEVICE)
             .map(|v| v == "N")
             .unwrap_or(false)
